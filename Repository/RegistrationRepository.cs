@@ -33,6 +33,8 @@ namespace JobFairApi.Repository
                 newRegistration.PhoneNumber = (string)ResultSet["PhoneNumber"];
                 newRegistration.Website = (string)ResultSet["Website"];
                 newRegistration.UserTyple = (string)ResultSet["UserTyple"];
+                newRegistration.Message = (string)ResultSet["Message"];
+
                 registrations.Add(newRegistration);
             }
 
@@ -48,7 +50,7 @@ namespace JobFairApi.Repository
 
             MySqlCommand cmd = Conn.CreateCommand();
             //SQL QUERY
-            cmd.CommandText = "insert into Registration (FirstName, LastName, Email, PhoneNumber, Website, UserTyple, CreatedDateTime) values (@FirstName, @LastName, @Email, @PhoneNumber, @Website, @UserTyple, NOW())";
+            cmd.CommandText = "insert into Registration (FirstName, LastName, Email, PhoneNumber, Website, UserTyple, Message, CreatedDateTime) values (@FirstName, @LastName, @Email, @PhoneNumber, @Website, @UserTyple, @Message, NOW())";
 
             cmd.Parameters.AddWithValue("@FirstName", newRegistration.FirstName);
             cmd.Parameters.AddWithValue("@LastName", newRegistration.LastName);
@@ -56,6 +58,7 @@ namespace JobFairApi.Repository
             cmd.Parameters.AddWithValue("@PhoneNumber", newRegistration.PhoneNumber);
             cmd.Parameters.AddWithValue("@Website", newRegistration.Website);
             cmd.Parameters.AddWithValue("@UserTyple", newRegistration.UserTyple);
+            cmd.Parameters.AddWithValue("@Message", newRegistration.Message);
 
             cmd.Prepare();
             cmd.ExecuteNonQuery();

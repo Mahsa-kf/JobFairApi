@@ -17,7 +17,6 @@ namespace JobFairApi.Controllers
         // GET: /Api/Registration/GetAll
         [ResponseType(typeof(IEnumerable<Registration>))]
         [HttpGet]
-        [EnableCors(origins: "*", methods: "*", headers: "*")]
         public IHttpActionResult GetAll()
         {
             var result = repo.GetRegistrations();
@@ -27,7 +26,6 @@ namespace JobFairApi.Controllers
 
         //POST: /Api/Registration/Add
         [HttpPost]
-        [EnableCors(origins: "*", methods: "*", headers: "*")]
         public IHttpActionResult Add([FromBody] Registration newRegistration)
         {
             repo.AddRegistration(newRegistration);

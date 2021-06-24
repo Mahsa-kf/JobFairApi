@@ -11,5 +11,7 @@ namespace JobFairApi.Models
         public string PhoneNumber { get; set; }
         public string Website { get; set; }
         public string UserTyple { get; set; }
+        public string Message { get; set; }
+
     }
 }
